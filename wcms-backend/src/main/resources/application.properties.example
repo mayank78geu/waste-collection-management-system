@@ -20,4 +20,4 @@ jwt.secret=REPLACE_WITH_MIN_256_BIT_SECRET_KEY_HERE
 jwt.expiration=86400000
 
 # --- Server ---
-server.port=8080
+server.port=8081
