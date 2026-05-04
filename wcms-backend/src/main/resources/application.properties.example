@@ -1,0 +1,23 @@
+# WCMS Backend — application.properties
+# Copy this file to application.properties and fill in your actual values.
+# application.properties is GITIGNORED — never commit it.
+
+spring.application.name=wcms-backend
+
+# --- Database ---
+spring.datasource.url=jdbc:mysql://localhost:3306/wcms_db
+spring.datasource.username=root
+spring.datasource.password=Mayank@dns78
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# --- JPA / Hibernate ---
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+# --- JWT ---
+jwt.secret=REPLACE_WITH_MIN_256_BIT_SECRET_KEY_HERE
+jwt.expiration=86400000
+
+# --- Server ---
+server.port=8080

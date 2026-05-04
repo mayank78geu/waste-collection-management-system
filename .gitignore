@@ -1,0 +1,23 @@
+# ========================
+# WCMS Root .gitignore
+# ========================
+
+# --- Backend ---
+wcms-backend/target/
+wcms-backend/src/main/resources/application.properties
+wcms-backend/.mvn/wrapper/maven-wrapper.jar
+wcms-backend/.idea/
+wcms-backend/*.iml
+
+# --- Frontend ---
+wcms-frontend/node_modules/
+wcms-frontend/dist/
+wcms-frontend/.env
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editor ---
+.vscode/
+*.swp
