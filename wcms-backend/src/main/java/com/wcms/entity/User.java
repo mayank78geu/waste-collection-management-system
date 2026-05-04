@@ -1,5 +1,6 @@
 package com.wcms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,6 +22,7 @@ public class User {
     @Column(unique = true, nullable = false, length = 100)
     private String email;
 
+    @JsonIgnore
     @Column(nullable = false, length = 255)
     private String passwordHash;
 
@@ -35,3 +37,4 @@ public class User {
         ADMIN, SUPERVISOR, DRIVER, CITIZEN
     }
 }
+
