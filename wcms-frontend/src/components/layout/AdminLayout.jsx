@@ -2,15 +2,17 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const adminNav = [
-  { to: '/admin/dashboard', icon: '⬛', label: 'Dashboard' },
+  { to: '/admin/dashboard', icon: '🏠', label: 'Dashboard' },
   { to: '/admin/zones',     icon: '📍', label: 'Zones' },
   { to: '/admin/vehicles',  icon: '🚛', label: 'Vehicles' },
   { to: '/admin/staff',     icon: '👷', label: 'Staff' },
   { to: '/admin/users',     icon: '👥', label: 'Users' },
+  { to: '/admin/reports',   icon: '📊', label: 'Reports' },
 ];
 const supervisorNav = [
-  { to: '/supervisor/dashboard', icon: '📊', label: 'Dashboard' },
-  { to: '/supervisor/schedules', icon: '📅', label: 'Schedules' },
+  { to: '/supervisor/dashboard',  icon: '📊', label: 'Dashboard' },
+  { to: '/supervisor/schedules',  icon: '📅', label: 'Schedules' },
+  { to: '/supervisor/complaints', icon: '📋', label: 'Complaints' },
 ];
 const driverNav = [
   { to: '/driver/dashboard', icon: '🗺️', label: 'My Tasks' },

@@ -581,3 +581,246 @@ textarea { resize: vertical; min-height: 90px; }
   .form-row { grid-template-columns: 1fr; }
   .summary-cards { grid-template-columns: 1fr 1fr; }
 }
+
+/* ════════════════════════════════════
+   Phase 3 — Complaint Form (Public)
+   ════════════════════════════════════ */
+.complaint-page-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 960px;
+  gap: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.complaint-info-panel {
+  background: linear-gradient(160deg, #0a1a30 0%, #0d2440 60%, #091520 100%);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  border-right: 1px solid var(--border);
+}
+.complaint-brand { text-align: center; }
+.complaint-brand h1 { font-size: 32px; font-weight: 800; color: var(--primary); margin: 10px 0 4px; letter-spacing: -1px; }
+.complaint-brand p  { color: var(--text-2); font-size: 13px; }
+
+.complaint-features { display: flex; flex-direction: column; gap: 20px; }
+.cf-feature { display: flex; gap: 14px; align-items: flex-start; }
+.cf-icon { font-size: 24px; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--primary-glow); border-radius: 10px; border: 1px solid rgba(0,212,160,0.2); }
+.cf-title { font-size: 14px; font-weight: 600; color: var(--text-1); margin-bottom: 2px; }
+.cf-desc  { font-size: 12.5px; color: var(--text-2); line-height: 1.5; }
+
+.complaint-form-card {
+  background: var(--bg-surface);
+  padding: 48px 40px;
+}
+.complaint-form-header { margin-bottom: 28px; }
+.complaint-form-header h2 { font-size: 22px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.complaint-form-header p  { font-size: 13.5px; color: var(--text-2); }
+.complaint-form { display: flex; flex-direction: column; gap: 0; }
+.char-count { font-size: 11.5px; color: var(--text-3); text-align: right; margin-top: 4px; }
+.complaint-form-footer { text-align: center; font-size: 13px; color: var(--text-2); margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+/* Success card */
+.complaint-success-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(0,212,160,0.25);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(0,212,160,0.08);
+  animation: slideUp 0.3s ease;
+}
+.success-icon-wrap { font-size: 52px; margin-bottom: 16px; }
+.complaint-success-card h2 { font-size: 24px; font-weight: 700; color: var(--success); margin-bottom: 10px; }
+.success-sub { font-size: 14px; color: var(--text-2); max-width: 360px; margin: 0 auto 24px; line-height: 1.6; }
+.tracking-code-block {
+  background: var(--bg-base);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.tracking-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); font-weight: 600; }
+.success-actions { display: flex; gap: 12px; justify-content: center; }
+
+@media (max-width: 680px) {
+  .complaint-page-wrap { grid-template-columns: 1fr; }
+  .complaint-info-panel { display: none; }
+}
+
+/* ════════════════════════════════════
+   Phase 3 — Track Complaint (Public)
+   ════════════════════════════════════ */
+.track-page-wrap {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.track-header { text-align: center; margin-bottom: 4px; }
+.track-brand  { font-size: 18px; font-weight: 700; color: var(--primary); display: inline-block; margin-bottom: 16px; }
+.track-header h1 { font-size: 26px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.track-header p  { font-size: 14px; color: var(--text-2); }
+
+.track-search-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-md);
+}
+.track-search-form { display: flex; gap: 12px; align-items: stretch; }
+.track-input-wrap  { flex: 1; position: relative; }
+.track-search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; pointer-events: none; }
+.track-input { width: 100%; }
+
+.track-result-card {
+  background: var(--bg-surface);
+  border: 1px solid;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.2s ease;
+}
+.track-status-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.track-status-badge {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.track-code-tag {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(56,189,248,0.2);
+}
+
+/* Timeline */
+.track-timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: relative;
+  padding-bottom: 4px;
+}
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  position: relative;
+}
+.timeline-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 2;
+  transition: all 0.2s;
+}
+.timeline-step.done .timeline-icon { border-color: var(--primary); background: var(--primary-glow); }
+.timeline-step.current .timeline-icon { border-color: var(--primary); box-shadow: 0 0 12px var(--primary-glow); }
+.timeline-label { font-size: 11px; color: var(--text-3); text-align: center; max-width: 80px; line-height: 1.3; }
+.timeline-step.done .timeline-label { color: var(--text-2); }
+.timeline-step.current .timeline-label { color: var(--primary); font-weight: 600; }
+.timeline-line {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 1;
+}
+.timeline-line.done { background: var(--primary); }
+
+.track-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-base);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.track-detail-item { display: flex; flex-direction: column; gap: 4px; }
+.td-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-3); font-weight: 600; }
+.td-value { font-size: 14px; color: var(--text-1); }
+
+.track-footer-actions { display: flex; gap: 10px; justify-content: flex-end; padding-top: 16px; border-top: 1px solid var(--border); }
+
+.track-help {
+  text-align: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 28px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.track-help code { color: var(--accent); background: var(--accent-glow); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+.track-help a { display: block; margin-top: 10px; }
+
+/* ════════════════════════════════════
+   Phase 3 — Complaint Management
+   ════════════════════════════════════ */
+.filter-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.complaint-status-badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.complaint-detail-block {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+/* ════════════════════════════════════
+   Phase 3 — Reports & Analytics
+   ════════════════════════════════════ */
+.report-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.report-chart-card { padding: 22px; }
+.report-chart-title { font-size: 15px; font-weight: 600; color: var(--text-1); margin-bottom: 4px; }
+.report-chart-sub   { font-size: 12px; color: var(--text-2); margin-bottom: 20px; }
+.report-empty { text-align: center; color: var(--text-3); font-size: 13px; padding: 30px 0; }
+
+@media (max-width: 900px) {
+  .report-charts-row { grid-template-columns: 1fr; }
+}
+
