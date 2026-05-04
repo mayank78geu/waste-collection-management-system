@@ -33,6 +33,9 @@ public class ComplaintService {
             userRepository.findById(request.getUserId()).ifPresent(complaint::setUser);
         }
 
+        // Set a temporary tracking code to bypass nullable=false constraint
+        complaint.setTrackingCode("TEMP-" + java.util.UUID.randomUUID().toString().substring(0, 8));
+
         // Save first to get generated ID
         Complaint saved = complaintRepository.save(complaint);
 

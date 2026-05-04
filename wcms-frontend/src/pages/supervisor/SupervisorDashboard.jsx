@@ -111,9 +111,9 @@ export default function SupervisorDashboard() {
                   <tr className="empty-row"><td colSpan={6}>No schedules found for this date</td></tr>
                 ) : (
                   schedules.map((s, i) => (
-                    <tr key={s.id}>
+                    <tr key={s.scheduleId}>
                       <td style={{ color: 'var(--text-3)' }}>{i + 1}</td>
-                      <td><strong>{s.zone?.name ?? '—'}</strong><br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.zone?.area}</span></td>
+                      <td><strong>{s.zone?.zoneName ?? '—'}</strong><br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.zone?.description}</span></td>
                       <td>{s.vehicle?.vehicleNumber ?? '—'}</td>
                       <td>{s.staff?.user?.name ?? '—'}<br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.staff?.designation}</span></td>
                       <td>

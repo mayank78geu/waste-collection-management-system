@@ -172,11 +172,11 @@ export default function ScheduleManagement() {
               <tr className="empty-row"><td colSpan={8}>No schedules for {date}. Create one above.</td></tr>
             ) : (
               schedules.map((s, i) => (
-                <tr key={s.id}>
+                <tr key={s.scheduleId}>
                   <td style={{ color: 'var(--text-3)' }}>{i + 1}</td>
                   <td>
-                    <strong>{s.zone?.name ?? '—'}</strong>
-                    {s.zone?.area && <><br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.zone.area}</span></>}
+                    <strong>{s.zone?.zoneName ?? '—'}</strong>
+                    {s.zone?.description && <><br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.zone.description}</span></>}
                   </td>
                   <td>{s.vehicle?.vehicleNumber ?? '—'}<br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.vehicle?.type}</span></td>
                   <td>{s.staff?.user?.name ?? '—'}<br /><span style={{ fontSize: 11, color: 'var(--text-3)' }}>{s.staff?.designation}</span></td>
@@ -190,9 +190,9 @@ export default function ScheduleManagement() {
                   <td>
                     <div className="actions">
                       <button
-                        id={`btn-delete-schedule-${s.id}`}
+                        id={`btn-delete-schedule-${s.scheduleId}`}
                         className="btn btn-danger btn-sm"
-                        onClick={() => setDeleteId(s.id)}
+                        onClick={() => setDeleteId(s.scheduleId)}
                         title="Cancel Schedule"
                       >
                         🗑
@@ -251,7 +251,7 @@ export default function ScheduleManagement() {
                   required
                 >
                   <option value="">— Select Zone —</option>
-                  {zones.map(z => <option key={z.id} value={z.id}>{z.name} ({z.area})</option>)}
+                  {zones.map(z => <option key={z.zoneId} value={z.zoneId}>{z.zoneName} {z.description ? `(${z.description})` : ''}</option>)}
                 </select>
               </div>
 
@@ -266,7 +266,7 @@ export default function ScheduleManagement() {
                   >
                     <option value="">— Select Vehicle —</option>
                     {vehicles.map(v => (
-                      <option key={v.id} value={v.id} disabled={v.status !== 'AVAILABLE'}>
+                      <option key={v.vehicleId} value={v.vehicleId} disabled={v.status !== 'AVAILABLE'}>
                         {v.vehicleNumber} — {v.type} {v.status !== 'AVAILABLE' ? `(${v.status})` : ''}
                       </option>
                     ))}
@@ -285,8 +285,8 @@ export default function ScheduleManagement() {
                   >
                     <option value="">— Select Staff —</option>
                     {staff.map(s => (
-                      <option key={s.id} value={s.id}>
-                        {s.user?.name ?? `Staff #${s.id}`} — {s.designation}
+                      <option key={s.staffId} value={s.staffId}>
+                        {s.user?.name ?? `Staff #${s.staffId}`} — {s.designation}
                       </option>
                     ))}
                   </select>

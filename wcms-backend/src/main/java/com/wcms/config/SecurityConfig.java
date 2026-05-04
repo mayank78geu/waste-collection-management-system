@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/complaints/track/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/complaints").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/zones").permitAll()
                 // Everything else needs a valid JWT
                 .anyRequest().authenticated()
             )

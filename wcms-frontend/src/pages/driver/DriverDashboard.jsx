@@ -32,7 +32,7 @@ export default function DriverDashboard() {
     setUpdating(id);
     try {
       await api.put(`/api/schedules/${id}/status`, { status });
-      setTasks(prev => prev.map(t => t.id === id ? { ...t, status } : t));
+      setTasks(prev => prev.map(t => t.scheduleId === id ? { ...t, status } : t));
     } catch (err) {
       console.error(err);
     } finally {
@@ -52,7 +52,7 @@ export default function DriverDashboard() {
 
   const TaskCard = ({ task }) => {
     const st = STATUS_MAP[task.status] || STATUS_MAP.PENDING;
-    const isUpdating = updating === task.id;
+    const isUpdating = updating === task.scheduleId;
     const isPast = task.date < today;
     return (
       <div
@@ -84,9 +84,9 @@ export default function DriverDashboard() {
         {/* Zone info */}
         <div style={{ marginBottom: 12 }}>
           <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
-            📍 {task.zone?.name ?? 'Unknown Zone'}
+            📍 {task.zone?.zoneName ?? 'Unknown Zone'}
           </div>
-          <div style={{ fontSize: 13, color: 'var(--text-2)' }}>{task.zone?.area}</div>
+          <div style={{ fontSize: 13, color: 'var(--text-2)' }}>{task.zone?.description}</div>
           {task.zone?.description && (
             <div style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 4 }}>{task.zone.description}</div>
           )}
@@ -109,19 +109,19 @@ export default function DriverDashboard() {
         {task.status === 'PENDING' && !isPast && (
           <div style={{ display: 'flex', gap: 10 }}>
             <button
-              id={`btn-complete-${task.id}`}
+              id={`btn-complete-${task.scheduleId}`}
               className="btn btn-primary"
               style={{ flex: 1 }}
               disabled={isUpdating}
-              onClick={() => updateStatus(task.id, 'COMPLETED')}
+              onClick={() => updateStatus(task.scheduleId, 'COMPLETED')}
             >
               {isUpdating ? 'Updating…' : '✅ Mark Completed'}
             </button>
             <button
-              id={`btn-miss-${task.id}`}
+              id={`btn-miss-${task.scheduleId}`}
               className="btn btn-danger"
               disabled={isUpdating}
-              onClick={() => updateStatus(task.id, 'MISSED')}
+              onClick={() => updateStatus(task.scheduleId, 'MISSED')}
             >
               ❌ Missed
             </button>
@@ -200,7 +200,7 @@ export default function DriverDashboard() {
               </div>
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 16 }}>
-                {todayTasks.map(t => <TaskCard key={t.id} task={t} />)}
+                {todayTasks.map(t => <TaskCard key={t.scheduleId} task={t} />)}
               </div>
             )}
           </div>
@@ -212,7 +212,7 @@ export default function DriverDashboard() {
                 <span style={{ color: 'var(--accent)' }}>◎</span> Upcoming
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 16 }}>
-                {upcomingTasks.map(t => <TaskCard key={t.id} task={t} />)}
+                {upcomingTasks.map(t => <TaskCard key={t.scheduleId} task={t} />)}
               </div>
             </div>
           )}
